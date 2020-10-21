@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import jwt_decode from 'jwt-decode';
 import logo from '../../assets/img/Logo.svg';
 import { Container, Form, Button } from 'react-bootstrap'
 import Menu from '../../components/menu'
@@ -48,7 +48,15 @@ const Login = () => {
 
             localStorage.setItem('token-nyous', data.token)
 
-            history.push("/eventos");
+            let usuario = jwt_decode;
+
+            console.log(usuario);
+
+            if(usuario.role == 'admin'){
+                history.push('/admin/dashboard');
+            }else{
+            history.push("/eventos")
+            }
         })
         .catch(err => console.error(err))
     }
