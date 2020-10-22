@@ -75,30 +75,7 @@ class Filmes extends Component {
     salvar(event) {
         event.preventDefault();
 
-            const filme = {
-                nome : this.state.nome,
-                categoria : this.state.categoria,
-                anoLancamento : this.state.anoLancamento,
-            }
-
-            //if ternário para saber se vai fazer um post ou put
-            let method = (this.state.id === "" ? 'POST' : 'PUT');
-            let urlRequest = (this.state.id === "" ? this.state.url :  this.state.url + '/' + this.state.id);
-
-            fetch(urlRequest, {
-                method : method,
-                body : JSON.stringify(filme),
-                headers : {
-                    'content-type' : 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(dados => {
-                alert('Filme savo');
-
-                this.listar();
-            })
-            .catch(err => console.error(err))
+          
     }
 
     setNome(event){
